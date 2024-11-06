@@ -1,0 +1,25 @@
+/* .fullPage{
+    display: inline-flex;
+    width: 1332px;
+    padding-left: 10px;
+    padding-right: 10px;
+    column-gap: 64px;
+};
+
+.SearchBox{
+width: 360px;
+border: none;
+}
+
+.carList{
+    width: 888px;
+    row-gap: 32px;
+    border: none;   
+}
+
+.fullCarList{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+} */

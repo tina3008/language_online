@@ -1,0 +1,46 @@
+.homeFooter{
+  display: inline-flex;
+  justify-content:space-between;
+}
+
+.footerBlock{
+display: inline-flex;
+column-gap: 16px;
+align-items: center;
+}
+
+.txtNum{
+font-weight: 500;
+font-size: 28px;
+line-height: 1.14286;
+letter-spacing: -0.02em;
+color: var(--text-color-main);
+}
+
+.txtSmall{
+  font-weight: 400;
+font-size: 14px; 
+line-height: 1.28571;
+letter-spacing: -0.02em;
+color: var(--text-color-07);
+width: 96px;
+}
+@media screen and (max-width: 767px) {
+  .homeFooter {
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .homeFooter {
+    width: 740px;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .homeFooter {
+    width: 1067px;
+    
+  }
+}

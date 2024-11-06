@@ -1,0 +1,106 @@
+.header {
+  display: block;
+  margin: 0 auto;
+}
+.wrapper {
+  display: flex;
+  padding: 20px 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family);
+  color: var(--text-color-main);
+  letter-spacing: -0.02em;
+}
+
+.logo {
+  display: inline-flex;
+  column-gap: 8px;
+  margin-right: 128px;
+}
+.logoTxt {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.container {
+  display: inline-flex;
+  column-gap: 28px;
+}
+
+.autentification {
+  display: inline-flex;
+  align-items: center;
+}
+.registrationBtn {
+  border-radius: 12px;
+  padding: 14px 39px;
+  color: var(--text-color-white);
+  background-color: var(--text-color-main);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.loginBtn {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  column-gap: 8px;
+  padding: 14px 16px;
+}
+
+
+.link{
+font-weight: 400;
+font-size: 16px;
+line-height: 1.25;
+}
+
+.hidden{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    max-width: 320px;
+  }
+  .burgerBtn {
+  display: flex;
+  fill: var(--text-color-main);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+.xImage{
+  stroke: var(--text-color-main);
+}
+}
+
+
+@media screen and (min-width: 768px) {
+  .header {
+    width: 705px;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    width: 1204px;
+  }
+}

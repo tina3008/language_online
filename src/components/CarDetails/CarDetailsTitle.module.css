@@ -1,0 +1,56 @@
+/* .titleBlock {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  text-decoration-skip-ink: none;
+  color: var(--main);
+}
+
+.star {
+  fill: var(--rating);
+  margin-right: 4px;
+}
+.nonStar{
+  margin-right: 4px;
+}
+.raiting {
+  display: flex;
+  text-decoration: underline;
+  margin-right: 16px;
+}
+
+.map {
+  margin-right: 4px;
+}
+.description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 524px;
+  margin-bottom: 24px;
+}
+
+.secondLineTitle {
+  display: flex;
+  flex-direction: row;
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+} */

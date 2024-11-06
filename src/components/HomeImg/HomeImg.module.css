@@ -1,0 +1,78 @@
+.homeImg {
+  display: flex;
+  justify-content: center;
+  width: 568px;
+  height: 530px;
+  border: none;
+  position: relative;
+}
+
+.imgHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 339px;
+  height: 339px;
+  margin-top: 80px;
+}
+
+@keyframes colorChangeMac {
+  0%,
+  100% {
+    background: #d08f38;
+  }
+  20% {
+    background: #183E49;
+  }
+  40% {
+    background: #314B6E;
+  }
+  60% {
+    background: #B03F3E;
+  }
+  80% {
+    background: #E17650;
+  }
+}
+.animateColorMac {
+  animation: colorChangeMac 20s infinite;
+}
+.imgMac {
+  width: 360px;
+  height: 182px;
+  border-radius: 7px 7px 0 0;
+  background-color: #d08f38;
+  position: absolute;
+  bottom: 0%;
+  animation: colorChangeMac 10s infinite;
+}
+
+@keyframes colorChangeLite {
+  0%,
+  100% {
+    fill: var(--color2);
+  }
+  20% {
+    fill: var(--color4);
+  }
+  40% {
+    fill: var(--color6);
+  }
+  60% {
+    fill: var(--color8);
+  }
+  80% {
+    fill: var(--color10);
+  }
+}
+.animateColorLite {
+  animation: colorChangeLite 20s infinite;
+}
+.imgApple {
+  /* color: linear-gradient(180deg, #fbe9ba 0%, #e7c885 100%); */
+  size: 46px;
+  fill: var(--color2);
+  display: flex;
+  margin: 65px auto;
+   animation: colorChangeLite 10s infinite;
+}
