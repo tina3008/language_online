@@ -5,6 +5,8 @@
   height: 530px;
   border: none;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .imgHead {
@@ -70,9 +72,46 @@
 }
 .imgApple {
   /* color: linear-gradient(180deg, #fbe9ba 0%, #e7c885 100%); */
-  size: 46px;
+  /* size: 46px; */
+  width: 46px;
+  height: 56px;
   fill: var(--color2);
   display: flex;
   margin: 65px auto;
    animation: colorChangeLite 10s infinite;
+}
+
+@media screen and (max-width: 767px) {
+  .homeImg {
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
+  height: 280px;
+}
+
+.imgHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  margin-top: 20px;
+}
+.imgMac {
+  width: 220px;
+  height: 100px;
+}
+.imgApple { 
+  width: 26px;
+  height: 36px;
+  margin: 35px auto;
+}
+}
+
+@media screen and (min-width: 768px) {
+  
+}
+
+@media screen and (min-width: 1440px) {
+  
 }

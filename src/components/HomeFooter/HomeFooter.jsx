@@ -13,7 +13,7 @@ export default function HomeFooter() {
         </div>
         <div className={css.footerBlock}>
           <p className={css.txtNum}>120 +</p>
-          <p className={css.txtSmall}>Subjects taught</p>
+          <p className={css.txtSmall}>Subjects  <br></br> taught</p>
         </div>
         <div className={css.footerBlock}>
           <p className={css.txtNum}>200 +</p>

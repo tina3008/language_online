@@ -1,12 +1,15 @@
 .homeFooter{
   display: inline-flex;
   justify-content:space-between;
+  flex-wrap: wrap;
 }
 
 .footerBlock{
 display: inline-flex;
 column-gap: 16px;
 align-items: center;
+justify-content: center;
+width: 232px;
 }
 
 .txtNum{
@@ -15,6 +18,8 @@ font-size: 28px;
 line-height: 1.14286;
 letter-spacing: -0.02em;
 color: var(--text-color-main);
+width: 120px;
+text-align:right;
 }
 
 .txtSmall{
@@ -28,19 +33,25 @@ width: 96px;
 @media screen and (max-width: 767px) {
   .homeFooter {
     max-width: 320px;
+    display:flex;
+    flex-direction: column;
+    row-gap: 24px;
+    justify-content: center;
   }
 }
 
 @media screen and (min-width: 768px) {
   .homeFooter {
-    width: 740px;
-    padding: 0 10px;
+    width: 656px;  
+    gap: 24px;
+    justify-content: center;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .homeFooter {
     width: 1067px;
-    
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 }

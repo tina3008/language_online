@@ -5,21 +5,7 @@ import { useEffect, useState } from "react";
 import BurderMenue from "../BurderMenue/BurderMenue";
 
 export default function Navigation() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 767);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 767);
-      if (window.innerWidth >= 767) {
-        setMenuOpen(false);
-      }
-    };    
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -35,7 +21,7 @@ export default function Navigation() {
           <p className={css.logoTxt}>LearnLingo</p>
         </NavLink>
         <nav>
-          <ul className={isMobile ? css.hidden : css.container}>
+          <ul className={css.container}>
             <li>
               <NavLink to="/" className={css.link}>
                 Home
@@ -48,8 +34,7 @@ export default function Navigation() {
             </li>
           </ul>
         </nav>
-
-        <div className={isMobile ? css.hidden : css.autentification}>
+        <div className={css.autentification}>
           <button className={css.loginBtn} type="button">
             <svg className={css.logoImage} width="28" height="28">
               <use href="/sprite.svg#icon-log-in-01"></use>
@@ -62,7 +47,7 @@ export default function Navigation() {
         </div>
 
         <button
-          className={isMobile ? css.burgerBtn : css.hidden}
+          className={css.burgerBtn}
           type="button"
           onClick={handleMenuToggle}
         >

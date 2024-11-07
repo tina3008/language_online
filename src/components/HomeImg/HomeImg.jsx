@@ -12,7 +12,7 @@ export default function HomeImg() {
         />
         <div className={css.imgMac}>
           {/* <FaApple className={css.imgApple} size="56" /> */}
-          <svg width="46" height="56" className={css.imgApple}>
+          <svg className={css.imgApple}>
             <use href="/sprite.svg#icon-apple-logo" ></use>
           </svg>
         </div>
