@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation/Navigation.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
-import { selectLoading, selectError } from "../../redux/selectors.js";
+import { selectLoading, selectError } from "../../redux/teachers/selectors.js";
 import { HelmetProvider } from "react-helmet-async";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
@@ -13,8 +13,6 @@ const NotFoundPage = lazy(() =>
 const TeachersPage = lazy(() =>
   import("../../pages/TeachersPage/TeachersPage.jsx")
 );
-const Detalis = lazy(() => import("../Detalis/Detalis.jsx"));
-// const Burger = lazy(() => import("../BurderMenue/BurderMenue.jsx"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,10 +26,8 @@ export default function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/teachers" element={<TeachersPage />}>
-              <Route path="detelis" element={<Detalis />} />
-            </Route>
-            {/* <Route path="/burger" element={<Burger />} /> */}
+            <Route path="/teachers" element={<TeachersPage />} />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

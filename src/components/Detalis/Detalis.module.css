@@ -1,0 +1,22 @@
+.detalBock{
+    display: block;
+    margin-bottom: 32px;
+}
+
+.experience{
+    margin-bottom: 32px;
+    font-weight: 400;
+font-size: 16px; 
+line-height: 1.5;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px    
+}
+
+.list{
+    display: inline-flex;
+    column-gap: 12px;
+}

@@ -1,25 +1,31 @@
-/* .fullPage{
-    display: inline-flex;
-    width: 1332px;
+.fullPage{
+    display: flex;
+    width: 1204px;
     padding-left: 10px;
     padding-right: 10px;
-    column-gap: 64px;
+    margin: 0 auto;
+    border: none;
+     
+ 
 };
 
 .SearchBox{
-width: 360px;
+width: 183px;
 border: none;
+margin-bottom: 81px;
+margin-left: 68px;
 }
 
-.carList{
-    width: 888px;
+.teachersList{
+    width: 1184px;
     row-gap: 32px;
-    border: none;   
+    border: none;  
+    padding: 24px; 
+    margin-bottom: 15px;
 }
 
-.fullCarList{
+.btnLoad{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-} */
+    margin-bottom: 96px;
+}
