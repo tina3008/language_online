@@ -10,21 +10,20 @@ export default function Detalis({ reviews, experience }) {
         {reviews.map((review, index) => {
           const { reviewer_name, reviewer_rating, comment } = review;
           return (
-            <li key={index} className={css.list}>
-              <div classname={css.avatar}>
-                <BsPersonCircle size="44" />
-              </div>
-              <div className={css.txtBlok}>
-                <p>{reviewer_name}</p>
-                <div className="raiting">
-                  <svg width="12" height="12" className={css.pointPhoto}>
-                    <use href="/sprite.svg#icon-star"></use>
-                  </svg>
-                  <p> {reviewer_rating}</p>
+            <li key={index} className={css.item}>
+              <div className={css.list}>
+                <BsPersonCircle size="44" classname={css.avatar} />
+                <div className={css.txtBlok}>
+                  <p className={css.name}>{reviewer_name}</p>
+                  <div className={css.raiting}>
+                    <svg width="12" height="12" className={css.star}>
+                      <use href="/sprite.svg#icon-star"></use>
+                    </svg>
+                    <p> {reviewer_rating}</p>
+                  </div>
                 </div>
               </div>
-
-              <p>{comment}</p>
+              <p className={css.coment}>{comment}</p>
             </li>
           );
         })}

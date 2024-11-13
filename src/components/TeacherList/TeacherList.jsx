@@ -1,7 +1,5 @@
 import css from "./TeacherList.module.css";
-import { NavLink } from "react-router-dom";
 
-import { connect } from "react-redux";
 import CardHead from "../CardHead/CardHead";
 import LangBlock from "../LangBlock/LangBlock";
 import Detalis from "../Detalis/Detalis";
@@ -18,8 +16,11 @@ export default function TeacherListList({ filtrTeachers }) {
   //       addToFavorites(car);
   //     }
   //   };
- const handleReadMoreClick = () => {
-   setShowDetails(true);
+ const handleReadMoreClick = (index) => {
+   setShowDetails((prev) => ({
+     ...prev,
+     [index]: !prev[index], 
+   }));
  };
   
   //  const initialValues = {
@@ -80,16 +81,15 @@ export default function TeacherListList({ filtrTeachers }) {
                   </p>
                 </li>
               </ul>
-              {!showDetails && (
+              {!showDetails[index] && (
                 <button
-                  onClick={handleReadMoreClick}
+                  onClick={() => handleReadMoreClick(index)}
                   className={css.buttonMore}
                 >
                   Read more
                 </button>
               )}
-
-              {showDetails && (
+              {showDetails[index] && (
                 <Detalis reviews={reviews} experience={experience} />
               )}
               <div className={css.lanBlock}>
