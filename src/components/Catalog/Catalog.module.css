@@ -1,5 +1,6 @@
 .fullPage{
     display: flex;
+    flex-direction: column;
     width: 1204px;
     padding-left: 10px;
     padding-right: 10px;

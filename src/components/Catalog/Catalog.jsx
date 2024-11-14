@@ -1,4 +1,6 @@
-// import SearchBox from "../SearchBox/SearchBox";
+
+
+import FilterBox from "../FilterBox/FilterBox";
 import TeacherList from "../TeacherList/TeacherList";
 import { fetchTeachers } from "../../redux/teachers/operations";
 import { selectError, selectLoading } from "../../redux/teachers/selectors";
@@ -31,15 +33,19 @@ function Catalog() {
 
   return (
     <section className={css.fullPage}>
+      <FilterBox />
       <div className={css.fullTeacherList}>
-        <div className={css.SearchBox}>{/* <SearchBox /> */}</div>
         <div className={css.teachersList}>
-          {currentTeachers.length > 0 && (
+          {currentTeachers.length > 0 ? (
             <TeacherList filtrTeachers={currentTeachers} />
+          ) : (
+            <p>No teachers found</p>
           )}
         </div>
         <div className={css.btnLoad}>
-          <LoadMoreBtn onClick={handleLoadMore} />
+          {currentTeachers.length < allTeachers.length && (
+            <LoadMoreBtn onClick={handleLoadMore} />
+          )}
         </div>
       </div>
       {isLoading && <Loader>Loading message</Loader>}

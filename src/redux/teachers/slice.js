@@ -1,11 +1,8 @@
-import { createSelector, createSlice} from "@reduxjs/toolkit";
-import {
-  fetchTeachers,
-  addTeacher, 
-  deleteTeacher
-} from "./operations";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+
+import { fetchTeachers, addTeacher, deleteTeacher } from "./operations";
 import { selectTeachers } from "./selectors";
-import { selectNameFilter } from "../filters/selectors";
+import { selectFilter } from "./selectors";
 import { logOut } from "../auth/operations";
 const teachersSlice = createSlice({
   name: "teachers",
@@ -61,28 +58,38 @@ const teachersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
-       
         state.items = [];
         state.loading = false;
-        state.error= null;
+        state.error = null;
       });
   },
 });
 
 export const visibleTeachers = createSelector(
-  [selectTeachers, selectNameFilter],
-  (teachers, selectNameFilter) => {
-    if (!selectNameFilter) {
-      return teachers; // Вернуть всех учителей, если фильтр не указан
+  [selectTeachers, selectFilter],
+  (teachers, filters) => {
+    if (!filters || !filters.values) {
+      return teachers;
     }
+
     return teachers.filter((teacher) => {
-      const filterName = teacher.name
-        .toLowerCase()
-        .includes(selectNameFilter.toLowerCase());
-      const filterNumber = teacher.number.includes(selectNameFilter);
-      return filterName || filterNumber;
+      const { levels, languages, price_per_hour } = filters.values;
+      let matches = true;
+
+      if (levels) {
+        matches = matches && teacher.levels.includes(levels);
+      }
+
+      if (languages) {
+        matches = matches && teacher.languages.includes(languages);
+      }
+
+      if (price_per_hour) {
+        matches = matches && teacher.price_per_hour == price_per_hour;
+      }
+
+      return matches;
     });
   }
 );
-
 export const teacherReducer = teachersSlice.reducer;

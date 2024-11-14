@@ -5,27 +5,16 @@ import LangBlock from "../LangBlock/LangBlock";
 import Detalis from "../Detalis/Detalis";
 import { useState } from "react";
 
-// import { addToFavorites, removeFromFavorites } from "../../redux/filtersSlice";
-
 export default function TeacherListList({ filtrTeachers }) {
   const [showDetails, setShowDetails] = useState(false);
-  //   const handleClick = (car) => {
-  //     if (favorites.some((favorite) => favorite.id === car.id)) {
-  //       removeFromFavorites(car);
-  //     } else {
-  //       addToFavorites(car);
-  //     }
-  //   };
- const handleReadMoreClick = (index) => {
-   setShowDetails((prev) => ({
-     ...prev,
-     [index]: !prev[index], 
-   }));
- };
-  
-  //  const initialValues = {
-  //    level: showDetails ? "еее" : "", 
-  //  };
+
+  const handleReadMoreClick = (index) => {
+    setShowDetails((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
     <ul className={css.list}>
       {filtrTeachers.map((teacher, index) => {
@@ -40,7 +29,6 @@ export default function TeacherListList({ filtrTeachers }) {
           experience,
         } = teacher;
 
-        // const isActive = favorites.some((favorite) => favorite.id === teacher.id);
         return (
           <li key={index} className={css.card}>
             <div className={css.avatarWraper}>
@@ -64,7 +52,7 @@ export default function TeacherListList({ filtrTeachers }) {
                 <li className={css.info}>
                   <div className={css.langInfo}>
                     <p className={css.nameInfo}>Speaks: </p>&nbsp;
-                    <p className={css.leanguage}>{languages}</p>
+                    <p className={css.leanguage}>{languages.join(", ")}</p>
                   </div>
                 </li>
                 <li className={css.info}>
@@ -93,7 +81,7 @@ export default function TeacherListList({ filtrTeachers }) {
                 <Detalis reviews={reviews} experience={experience} />
               )}
               <div className={css.lanBlock}>
-                <LangBlock teacher={teacher} />
+                <LangBlock teacher={teacher} showDetails={showDetails[index]} />
               </div>
             </div>
           </li>

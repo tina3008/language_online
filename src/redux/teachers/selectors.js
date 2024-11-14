@@ -4,6 +4,4 @@ export const selectTeacher = (state) => state.teachers.item;
 
 export const selectLoading = (state) => state.teachers.isLoading;
 export const selectError = (state) => state.teachers.error;
-
- export const selectFilter = (state) => state.filters.values;
-export const selectNameFilter = (state) => state.filters.location;
+ export const selectFilter = (state) => state.filters;
