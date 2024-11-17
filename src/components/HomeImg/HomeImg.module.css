@@ -16,6 +16,7 @@
   width: 339px;
   height: 339px;
   margin-top: 80px;
+ 
 }
 
 @keyframes colorChangeMac {
@@ -47,6 +48,7 @@
   position: absolute;
   bottom: 0%;
   animation: colorChangeMac 10s infinite;
+
 }
 
 @keyframes colorChangeLite {
@@ -72,13 +74,14 @@
 }
 .imgApple {
   /* color: linear-gradient(180deg, #fbe9ba 0%, #e7c885 100%); */
-  /* size: 46px; */
+ 
   width: 46px;
   height: 56px;
   fill: var(--color2);
   display: flex;
   margin: 65px auto;
    animation: colorChangeLite 10s infinite;
+
 }
 
 @media screen and (max-width: 767px) {

@@ -1,15 +1,22 @@
 import css from "./RegistrationForm.module.css";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 // import toast from "react-hot-toast";
-// import { useDispatch } from "react-redux";
-// import { register } from "../../redux/auth/operations";
+import { register } from "../../redux/auth/operations";
+import { closeModal } from "../../redux/modal/slice";
+import { selectActiveModal } from "../../redux/modal/selectors";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function RegistrationForm({ closeForm }) {
-  //   const dispatch = useDispatch();
+export default function RegistrationForm({ closeMenu }) {
+  const dispatch = useDispatch();
 
   const validationControl = Yup.object().shape({
+    name: Yup.string()
+      .min(3, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
     email: Yup.string()
       .min(3, "Too Short!")
       .max(50, "Too Long!")
@@ -20,99 +27,99 @@ export default function RegistrationForm({ closeForm }) {
       .required("Required"),
   });
 
-  //   const handleSubmit = (values, actions) => {
-  //     dispatch(register(values))
-  //       .unwrap()
-  //       .then((data) => console.log(data))
-  //       .catch((err) => console.log(err));
+  const activeModal = useSelector(selectActiveModal);
 
-  //     actions.resetForm();
-  //   };
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    if (activeModal) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeModal]);
+
+  if (activeModal !== "registration") return null;
+
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values))
+      .unwrap()
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+
+    actions.resetForm();
+  };
+
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeMenu();
+    }
+  };
   return (
-    <div className={css.registrationPopUp}>
-      <h2 classname={css.regTitle}>Registration</h2>
-      <p className={css.regTxt}>
-        Thank you for your interest in our platform! In order to register, we
-        need some information. Please provide us with the following information
-      </p>
-      <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          password: "",
-        }}
-        //   onSubmit={handleSubmit}
-        validationSchema={validationControl}
-      >
-        <Form className={css.form} autoComplete="off">
-          <div className={css.fialdStyle}>
-            <div>
+    <div className={css.modalOverlay} onClick={handleClose}>
+      <div className={css.registrationPopUp}>
+        <button className={css.closeButton} onClick={handleClose}>
+          <svg width="32" height="32" className={css.imgClosed}>
+            <use href="/sprite.svg#icon-x"></use>
+          </svg>
+        </button>
+        <h2 className={css.regTitle}>Registration</h2>
+        <p className={css.regTxt}>
+          Thank you for your interest in our platform! In order to register, we
+          need some information. Please provide us with the following
+          information
+        </p>
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            password: "",
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={validationControl}
+        >
+          <Form className={css.form} autoComplete="off">
+            <div className={css.fialdStyle}>
               <Field
                 type="text"
                 name="name"
-                id={nameFieldId}
-                placeholder="Name"
                 className={css.field}
+                placeholder="Name"
               />
-              <ErrorMessage
-                name="name"
-                component="span"
-                className={css.errMessage}
-              />
-            </div>
+              <ErrorMessage name="name" className={css.errorMessage} />
 
-            <div>
               <Field
                 type="email"
                 name="email"
-                id={emailFieldId}
-                placeholder="Email"
                 className={css.field}
+                placeholder="Email"
               />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={css.errMessage}
-              />
-            </div>
+              <ErrorMessage name="email" className={css.errField} />
 
-            <div>
               <Field
                 type="password"
                 name="password"
-                id={passwordFieldId}
-                placeholder="password*"
                 className={css.field}
+                placeholder="Password"
               />
-              <button
-                type="button"
-                className={css.eyeBtn}
-                onClick={(event) => {
-                  event.preventDefault();
-                  toggle("password");
-                }}
-              >
-                {showPassword.password ? (
-                  <svg className={css.btnEye} width="28" height="28">
-                    <use href="/sprite.svg#icon-eye-off"></use>
-                  </svg>
-                ) : (
-                  <HiOutlineEyeOff className={css.btnEye} />
-                )}
-              </button>
-              <ErrorMessage
-                name="password"
-                component="span"
-                className={css.errMessage}
-              />
+              <ErrorMessage name="password" className={css.errField} />
             </div>
             <button type="submit" className={css.btn}>
               Sign Up
             </button>
-          </div>
-        </Form>
-      </Formik>
+          </Form>
+        </Formik>
+      </div>
     </div>
   );
 }

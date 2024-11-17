@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import {RestrictedRoute, PrivateRoute} from "../Navigation/RestrictedRoute.jsx";
 import { lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation/Navigation.jsx";
@@ -13,7 +14,9 @@ const NotFoundPage = lazy(() =>
 const TeachersPage = lazy(() =>
   import("../../pages/TeachersPage/TeachersPage.jsx")
 );
-
+const FavoritePage = lazy(() =>
+  import("../../pages/FavoritePage/FavoritePage.jsx")
+);
 export default function App() {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
@@ -27,6 +30,12 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/teachers" element={<TeachersPage />} />
+            <Route
+              path="/favorite"
+              element={
+                <PrivateRoute component={<FavoritePage />} redirectTo="/login" />
+              }
+            />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

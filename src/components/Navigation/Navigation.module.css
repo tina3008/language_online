@@ -42,6 +42,10 @@
   line-height: 1.25;
 }
 
+.registrationBtn:hover,  :focus, :active{
+  border: none; 
+   background-color: var(--text-color-main);
+}
 .loginBtn {
   font-weight: 700;
   font-size: 16px;
@@ -55,6 +59,10 @@
   padding: 14px 16px;
 }
 
+.loginBtn:hover, :focus, :active{
+  border: none; 
+background-color: var(--text-color-white)
+}
 
 .link{
 font-weight: 400;

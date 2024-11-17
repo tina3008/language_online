@@ -1,34 +1,42 @@
-import FeedbackForm from "../FeedbackForm/FeedbackForm";
-import css from "./TrialLesson.module.css";
 import React, { useEffect } from "react";
+import css from "./TrialLesson.module.css";
+import { closeModal } from "../../redux/modal/slice";
+import { selectActiveModal } from "../../redux/modal/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
-export default function TrialLesson({ onClose, teacher }) {
-    const { name, surname, avatar_url } = teacher;
 
-    useEffect(() => {
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          onClose();
-        }
-      };
+export default function TrialLesson({ teacher }) {
+  const { name, surname, avatar_url } = teacher;
+  const dispatch = useDispatch();
+  const activeModal = useSelector(selectActiveModal);
 
-      document.addEventListener("keydown", handleKeyDown);
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown);
-      };
-    }, [onClose]);
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
 
-   
-    const handleBackdropClick = (event) => {
-      if (event.target === event.currentTarget) {
-        onClose();
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
       }
     };
 
+    if (activeModal) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeModal]);
+
+  if (activeModal !== "langLevel") return null;
+
   return (
-    <div className={css.modalOverlay} onClick={handleBackdropClick}>
-      <div className={css.modalContent}>
-        <button onClick={onClose} className={css.closeButton}>
+    <div className={css.modalOverlay} onClick={handleClose}>
+      <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
+        <button onClick={handleClose} className={css.closeButton}>
           <svg width="32" height="32" className={css.imgClosed}>
             <use href="/sprite.svg#icon-x"></use>
           </svg>
@@ -38,7 +46,6 @@ export default function TrialLesson({ onClose, teacher }) {
           Our experienced tutor will assess your current language level, discuss
           your learning goals, and tailor the lesson to your specific needs.
         </p>
-
         <div className={css.teacher}>
           <img
             className={css.avatar}
@@ -53,11 +60,11 @@ export default function TrialLesson({ onClose, teacher }) {
             </p>
           </div>
         </div>
-
         <h3 className={css.question}>
-          What is your main reason for learning English?
+           What is your main reason for learning English? 
         </h3>
         <FeedbackForm />
+  
       </div>
     </div>
   );
