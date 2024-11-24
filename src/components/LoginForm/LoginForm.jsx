@@ -1,19 +1,20 @@
 import css from "../RegistrationForm/RegistrationForm.module.css";
-
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import * as Yup from "yup";
-// import toast from "react-hot-toast";
-import { register } from "../../redux/auth/operations";
+import toast, { Toaster } from "react-hot-toast";
+import { logIn } from "../../redux/auth/operations";
 import { closeModal } from "../../redux/modal/slice";
 import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import PasswordField from "../RegistrationForm/PasswordField/PasswordField";
 
 export default function loginForm({ closeMenu }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validationControl = Yup.object().shape({
-
     email: Yup.string()
       .min(3, "Too Short!")
       .max(50, "Too Long!")
@@ -49,21 +50,30 @@ export default function loginForm({ closeMenu }) {
   if (activeModal !== "login") return null;
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values))
+    dispatch(logIn(values))
       .unwrap()
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-
-    actions.resetForm();
+      .then((data) => {
+        toast.success("Log in successful!", {
+          style: { background: "white", color: "black" },
+          position: "top-center",
+        });
+        actions.resetForm();
+        handleClose();
+      })
+      .catch((err) => {
+        toast.error(`Log in failed: ${err.toString()}`, {
+          style: { background: "red" },
+        });
+      });
   };
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      closeMenu();
+      handleClose();
     }
   };
   return (
-    <div className={css.modalOverlay} onClick={handleClose}>
+    <div className={css.modalOverlay} onClick={handleBackdropClick}>
       <div className={css.registrationPopUp}>
         <button className={css.closeButton} onClick={handleClose}>
           <svg width="32" height="32" className={css.imgClosed}>
@@ -76,7 +86,7 @@ export default function loginForm({ closeMenu }) {
           continue your search for an teacher.
         </p>
         <Formik
-          initialValues={{           
+          initialValues={{
             email: "",
             password: "",
           }}
@@ -85,26 +95,20 @@ export default function loginForm({ closeMenu }) {
         >
           <Form className={css.form} autoComplete="off">
             <div className={css.fialdStyle}>
-              
               <Field
                 type="email"
                 name="email"
                 className={css.field}
                 placeholder="Email"
               />
-              <ErrorMessage name="email" className={css.errField} />
+              <ErrorMessage name="email" className={css.errorMessage} />         
 
-              <Field
-                type="password"
-                name="password"
-                className={css.field}
-                placeholder="Password"
-              />
-              <ErrorMessage name="password" className={css.errField} />
+              <PasswordField />
             </div>
             <button type="submit" className={css.btn}>
               Sign Up
             </button>
+            <Toaster />
           </Form>
         </Formik>
       </div>

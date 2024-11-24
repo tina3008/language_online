@@ -3,14 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const modalSlice = createSlice({
   name: "modal",
   initialState: {
-    activeModal: null, // Идентификатор активного модального окна
+    activeModal: null, 
   },
   reducers: {
     openModal: (state, action) => {
-      state.activeModal = action.payload; // Устанавливаем идентификатор окна
+      state.activeModal = action.payload; 
     },
     closeModal: (state) => {
-      state.activeModal = null; // Закрываем модальное окно
+      state.activeModal = null;
     },
   },
 });

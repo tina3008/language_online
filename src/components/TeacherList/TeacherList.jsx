@@ -1,5 +1,4 @@
 import css from "./TeacherList.module.css";
-
 import CardHead from "../CardHead/CardHead";
 import LangBlock from "../LangBlock/LangBlock";
 import Detalis from "../Detalis/Detalis";
@@ -17,8 +16,9 @@ export default function TeacherListList({ filtrTeachers }) {
 
   return (
     <ul className={css.list}>
-      {filtrTeachers.map((teacher, index) => {
+      {filtrTeachers.map((teacher) => {
         const {
+          id,
           name,
           surname,
           languages,
@@ -30,7 +30,8 @@ export default function TeacherListList({ filtrTeachers }) {
         } = teacher;
 
         return (
-          <li key={index} className={css.card}>
+          // <li key={index} className={css.card}>
+          <li key={teacher.id} className={css.card}> 
             <div className={css.avatarWraper}>
               <svg width="12" height="12" className={css.pointPhoto}>
                 <use href="/sprite.svg#icon-photo_point"></use>
@@ -44,7 +45,7 @@ export default function TeacherListList({ filtrTeachers }) {
             </div>
 
             <div className={css.info}>
-              <CardHead teacher={teacher} />
+              <CardHead teacher={teacher}  />
               <p className={css.teacherName}>
                 {name} {surname}
               </p>
@@ -69,19 +70,19 @@ export default function TeacherListList({ filtrTeachers }) {
                   </p>
                 </li>
               </ul>
-              {!showDetails[index] && (
+              {!showDetails[id] && (
                 <button
-                  onClick={() => handleReadMoreClick(index)}
+                  onClick={() => handleReadMoreClick(id)}
                   className={css.buttonMore}
                 >
                   Read more
                 </button>
               )}
-              {showDetails[index] && (
+              {showDetails[id] && (
                 <Detalis reviews={reviews} experience={experience} />
               )}
               <div className={css.lanBlock}>
-                <LangBlock teacher={teacher} showDetails={showDetails[index]} />
+                <LangBlock teacher={teacher} showDetails={showDetails[id]} />
               </div>
             </div>
           </li>

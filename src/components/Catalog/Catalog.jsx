@@ -20,6 +20,7 @@ function Catalog() {
   const isError = useSelector(selectError);
   const allTeachers = useSelector(visibleTeachers);
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
+console.log("allTeachers = ", allTeachers.length);
 
   useEffect(() => {
     dispatch(fetchTeachers());

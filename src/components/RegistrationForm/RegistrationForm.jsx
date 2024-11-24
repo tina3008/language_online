@@ -1,13 +1,13 @@
 import css from "./RegistrationForm.module.css";
-
+import toast, { Toaster } from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-// import toast from "react-hot-toast";
 import { register } from "../../redux/auth/operations";
 import { closeModal } from "../../redux/modal/slice";
 import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import PasswordField from "./PasswordField/PasswordField";
 
 export default function RegistrationForm({ closeMenu }) {
   const dispatch = useDispatch();
@@ -50,23 +50,39 @@ export default function RegistrationForm({ closeMenu }) {
   }, [activeModal]);
 
   if (activeModal !== "registration") return null;
-
+ 
   const handleSubmit = (values, actions) => {
     dispatch(register(values))
       .unwrap()
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-
-    actions.resetForm();
+      .then((data) => {
+        toast.success("Registration successful!", {
+          style: { background: "white", color: "black" },
+          position: "top-center",
+        });
+        actions.resetForm();
+        handleClose(); 
+      })
+      .catch((err) => {
+        toast(`Registration failed: ${err.toString()}`, {
+          style: { background: "red" },
+          containerStyle: {
+            top: 150,
+            left: 20,
+            bottom: 20,
+            right: 20,
+          },
+        });
+      });
   };
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      closeMenu();
+      handleClose();
     }
   };
+
   return (
-    <div className={css.modalOverlay} onClick={handleClose}>
+    <div className={css.modalOverlay} onClick={handleBackdropClick}>
       <div className={css.registrationPopUp}>
         <button className={css.closeButton} onClick={handleClose}>
           <svg width="32" height="32" className={css.imgClosed}>
@@ -104,19 +120,14 @@ export default function RegistrationForm({ closeMenu }) {
                 className={css.field}
                 placeholder="Email"
               />
-              <ErrorMessage name="email" className={css.errField} />
+              <ErrorMessage name="email" className={css.errorMessage} />
 
-              <Field
-                type="password"
-                name="password"
-                className={css.field}
-                placeholder="Password"
-              />
-              <ErrorMessage name="password" className={css.errField} />
+             <PasswordField/>
             </div>
             <button type="submit" className={css.btn}>
               Sign Up
             </button>
+            <Toaster />
           </Form>
         </Formik>
       </div>

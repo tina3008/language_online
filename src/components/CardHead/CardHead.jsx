@@ -1,12 +1,33 @@
-import css from "./CardHead.module.css"
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import css from "./CardHead.module.css";
 import { LuBookOpen } from "react-icons/lu";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { addToFavorites, removeFromFavorites } from "../../redux/filters/slice";
 
 export default function CardHead({ teacher }) {
-    const { 
-      rating,    
-      price_per_hour,
-      lessons_done,          
-    } = teacher;
+  const { id, rating, price_per_hour, lessons_done } = teacher;
+
+  const dispatch = useDispatch();
+
+  const favorites = useSelector((state) => state.filters.favorites);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  // const isFavorite = favorites.some((favorite) => favorite.id === id);
+const isFavorite = favorites.includes(id);
+const handleClick = () => {
+  if (!isLoggedIn) {
+    alert("Only authorized users can perform this action.");
+    return;
+  }
+
+  if (isFavorite) {
+    dispatch(removeFromFavorites(id)); // Используем индекс
+  } else {
+    dispatch(addToFavorites(id)); // Используем индекс
+  }
+};
+
   return (
     <div className={css.headCard}>
       <div className={css.bigBlock}>
@@ -33,8 +54,13 @@ export default function CardHead({ teacher }) {
           </li>
         </ul>
       </div>
-      <button type="button" className={css.hurtButton}>
-        <svg width="26" height="26" className={css.hurt}>
+
+      <button className={css.hurtButton} onClick={handleClick}>
+        <svg
+          width="26"
+          height="26"
+          className={`${css.hurt} ${isFavorite ? css.favorite : ""}`}
+        >
           <use href="/sprite.svg#icon-heart"></use>
         </svg>
       </button>

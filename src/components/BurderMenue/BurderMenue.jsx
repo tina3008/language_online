@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import css from "./BurderMenue.module.css";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import LoginForm from "../LoginForm/LoginForm";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 export default function BurderMenue({ closeMenu }) {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -20,7 +20,7 @@ export default function BurderMenue({ closeMenu }) {
     setShowLoginForm(false);
     setShowRegistrationForm(false);
   };
-
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div className={css.burgerMenue}>
       <ul className={css.container}>
@@ -33,6 +33,15 @@ export default function BurderMenue({ closeMenu }) {
           <NavLink to="/teachers" className={css.link} onClick={closeMenu}>
             Teachers
           </NavLink>
+        </li>
+        <li>
+          {isLoggedIn ? (
+            <NavLink to="/favorite" className={css.link}>
+              Favorite
+            </NavLink>
+          ) : (
+            ""
+          )}
         </li>
         <li>
           <button
@@ -56,7 +65,6 @@ export default function BurderMenue({ closeMenu }) {
           </button>
         </li>
       </ul>
-      
     </div>
   );
 }
