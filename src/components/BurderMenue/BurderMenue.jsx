@@ -38,7 +38,7 @@ export default function BurderMenue({ closeMenu }) {
         </li>
         <li>
           {isLoggedIn && (
-            <NavLink to="/favorite" className={css.link}>
+            <NavLink to="/favorite" className={css.link} onClick={closeMenu}>
               Favorite
             </NavLink>
           )}
