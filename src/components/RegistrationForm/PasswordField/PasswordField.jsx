@@ -1,4 +1,3 @@
-// import css from "../RegistrationForm.module.css"
 import css from "./PasswordField.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
@@ -49,7 +48,11 @@ export default function PasswordField() {
         </>
       )}
 
-      <ErrorMessage name="password" className={css.errorMessage} />
+      <ErrorMessage
+        name="password"
+        className={css.errorMessage}
+        component="span"
+      />
     </div>
   );
 }

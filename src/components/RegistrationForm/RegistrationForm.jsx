@@ -112,7 +112,11 @@ export default function RegistrationForm({ closeMenu }) {
                 className={css.field}
                 placeholder="Name"
               />
-              <ErrorMessage name="name" className={css.errorMessage} />
+              <ErrorMessage
+                name="name"
+                className={css.errorMessage}
+                component="span"
+              />
 
               <Field
                 type="email"
@@ -120,7 +124,11 @@ export default function RegistrationForm({ closeMenu }) {
                 className={css.field}
                 placeholder="Email"
               />
-              <ErrorMessage name="email" className={css.errorMessage} />
+              <ErrorMessage
+                name="email"
+                className={css.errorMessage}
+                component="span"
+              />
               <PasswordField />
             </div>
             <button type="submit" className={css.btn}>

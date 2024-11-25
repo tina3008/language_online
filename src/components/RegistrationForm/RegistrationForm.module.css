@@ -56,6 +56,7 @@
   background-color: var(--color11);
   overhidden: none;
 }
+
 .errorMessage {
   color: red;
 }
