@@ -1,5 +1,3 @@
-
-
 import FilterBox from "../FilterBox/FilterBox";
 import TeacherList from "../TeacherList/TeacherList";
 import { fetchTeachers } from "../../redux/teachers/operations";
@@ -12,7 +10,7 @@ import css from "./Catalog.module.css";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import { visibleTeachers } from "../../redux/teachers/slice";
 
-function Catalog() {
+function Catalog({ showFavoritesOnly }) {
   const ITEMS_PER_LOAD = 4;
 
   const dispatch = useDispatch();
@@ -20,7 +18,6 @@ function Catalog() {
   const isError = useSelector(selectError);
   const allTeachers = useSelector(visibleTeachers);
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
-console.log("allTeachers = ", allTeachers.length);
 
   useEffect(() => {
     dispatch(fetchTeachers());
@@ -38,7 +35,10 @@ console.log("allTeachers = ", allTeachers.length);
       <div className={css.fullTeacherList}>
         <div className={css.teachersList}>
           {currentTeachers.length > 0 ? (
-            <TeacherList filtrTeachers={currentTeachers} />
+            <TeacherList
+              filtrTeachers={currentTeachers}
+              showFavoritesOnly={showFavoritesOnly}
+            />
           ) : (
             <p>No teachers found</p>
           )}

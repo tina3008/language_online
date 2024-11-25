@@ -1,16 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BurderMenue from "../BurderMenue/BurderMenue";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import LoginForm from "../LoginForm/LoginForm";
-import { openModal } from "../../redux/modal/slice";
 import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/auth/operations";
+
 import Loader from "../Loader/Loader";
+import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,27 +18,13 @@ export default function Navigation() {
   const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-
-  const handleRegistation = () => {
-    dispatch(openModal("registration"));
-  };
-  const handleLogin = () => {
-    dispatch(openModal("login"));
-  };
-  const handleLogout = () => {
-    dispatch(logOut()).then(() => {
-      localStorage.clear();
-      window.location.reload();
-    });
-  };
-
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
     <section className={css.header}>
-      <div className={css.wrapper}>
+      <div className={`${css.wrapper} ${menuOpen ? css.fixedWrapper : ""}`}>
         <NavLink to="/" className={css.logo}>
           <svg className={css.logoImage} width="28" height="28">
             <use href="/sprite.svg#icon-ukraine"></use>
@@ -68,36 +52,9 @@ export default function Navigation() {
             </li>
           </ul>
         </nav>
-
-        {isLoggedIn ? (
-          <button
-            className={css.registrationBtn}
-            type="button"
-            onClick={handleLogout}
-          >
-            Log Out
-          </button>
-        ) : (
-          <div className={css.autentification}>
-            <button
-              className={css.loginBtn}
-              type="button"
-              onClick={handleLogin}
-            >
-              <svg className={css.logoImage} width="28" height="28">
-                <use href="/sprite.svg#icon-log-in-01"></use>
-              </svg>
-              Log in
-            </button>
-            <button
-              className={css.registrationBtn}
-              type="button"
-              onClick={handleRegistation}
-            >
-              Registration
-            </button>
-          </div>
-        )}
+        <div className={css.registrationBtn}>
+          <RegistrationBtn />
+        </div>
 
         <button
           className={css.burgerBtn}
@@ -106,16 +63,18 @@ export default function Navigation() {
         >
           {menuOpen ? (
             <svg width="28" height="28">
-              <use href="/sprite.svg#icon-x" className={css.xImage}></use>
+              <use
+                href="/sprite.svg#icon-x"
+                width="28"
+                className={css.xImage}
+              ></use>
             </svg>
           ) : (
-            <GiHamburgerMenu size="28" />
+            <GiHamburgerMenu size="28" className={css.xImage} />
           )}
         </button>
       </div>
       {menuOpen && <BurderMenue closeMenu={handleMenuToggle} />}
-      {activeModal === "registration" && <RegistrationForm />}
-      {activeModal === "login" && <LoginForm />}
     </section>
   );
 }

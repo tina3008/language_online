@@ -1,0 +1,62 @@
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.registrationBtn {
+  border-radius: 12px;
+  padding: 14px 39px;
+  color: var(--text-color-white);
+  background-color: var(--text-color-main);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.registrationBtn:hover,
+:focus,
+:active {
+  border: none;
+  background-color: var(--text-color-main);
+}
+.loginBtn {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  column-gap: 8px;
+  padding: 14px 16px;
+}
+
+.loginBtn:hover,
+:focus,
+:active {
+  border: none;
+  background-color: var(--text-color-white);
+}
+@media screen and (max-width: 767px) {
+  .autentification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .autentification {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

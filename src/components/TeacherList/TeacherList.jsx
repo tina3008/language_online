@@ -3,20 +3,29 @@ import CardHead from "../CardHead/CardHead";
 import LangBlock from "../LangBlock/LangBlock";
 import Detalis from "../Detalis/Detalis";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-export default function TeacherListList({ filtrTeachers }) {
-  const [showDetails, setShowDetails] = useState(false);
+export default function TeacherList({
+  filtrTeachers,
+  showFavoritesOnly = false,
+}) {
+  const [showDetails, setShowDetails] = useState({});
+  const favorites = useSelector((state) => state.filters.favorites);
 
-  const handleReadMoreClick = (index) => {
+  const handleReadMoreClick = (id) => {
     setShowDetails((prev) => ({
       ...prev,
-      [index]: !prev[index],
+      [id]: !prev[id],
     }));
   };
 
+  const teachersToDisplay = showFavoritesOnly
+    ? filtrTeachers.filter((teacher) => favorites.includes(teacher.id))
+    : filtrTeachers;
+
   return (
     <ul className={css.list}>
-      {filtrTeachers.map((teacher) => {
+      {teachersToDisplay.map((teacher) => {
         const {
           id,
           name,
@@ -30,8 +39,7 @@ export default function TeacherListList({ filtrTeachers }) {
         } = teacher;
 
         return (
-          // <li key={index} className={css.card}>
-          <li key={teacher.id} className={css.card}> 
+          <li key={id} className={css.card}>
             <div className={css.avatarWraper}>
               <svg width="12" height="12" className={css.pointPhoto}>
                 <use href="/sprite.svg#icon-photo_point"></use>
@@ -45,7 +53,7 @@ export default function TeacherListList({ filtrTeachers }) {
             </div>
 
             <div className={css.info}>
-              <CardHead teacher={teacher}  />
+              <CardHead teacher={teacher} />
               <p className={css.teacherName}>
                 {name} {surname}
               </p>
@@ -59,7 +67,6 @@ export default function TeacherListList({ filtrTeachers }) {
                 <li className={css.info}>
                   <p className={css.description}>
                     <span className={css.nameInfo}>Lesson Info: </span>
-                    {"  "}
                     {lesson_info}
                   </p>
                 </li>

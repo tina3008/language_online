@@ -2,7 +2,6 @@ import css from "./Detalis.module.css";
 import { BsPersonCircle } from "react-icons/bs";
 
 export default function Detalis({ reviews, experience }) {
- 
   return (
     <div className={css.detalBock}>
       <p className={css.experience}>{experience}</p>

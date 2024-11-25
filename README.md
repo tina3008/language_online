@@ -1,22 +1,20 @@
-# Travel Trucks
+# Learn Lingo
 
-Travel Trucks is a web application that allows users to browse, filter, and add to favorite different campers
-for rent. The app provides an intuitive interface for exploring various camper options and making
-bookings.
+Learn Lingo is a web app for those who want to find a foreign language teacher. The web app allows users to browse, filter and add teachers to their favorites.
 
 ## Features
 
-- Browse a catalog of campers
-- Filter campers by location, equipment, and type
-- Add campers to favorites
-- View detailed information, images, and reviews for each camper
-- Book campers through a convenient form
+- Browse a catalog of teachers
+- Filter teachers by languages, price, and levels
+- Add teachers  to favorites
+- View detailed information, images, and reviews for each teachers 
+- Book trial lesson through a convenient form
 
 ## Pages
 
  **Home**: Landing page with an introduction to the service
- **Catalog**: Main page for browsing and filtering campers
- **Details**: Page with detailed information about the current camper
+ **Teachers**: Main page for browsing and filtering teachers
+ **Favorite**: Page with favorite teachers
  **NotFound**: Not found page
 
 ## Technologies Used

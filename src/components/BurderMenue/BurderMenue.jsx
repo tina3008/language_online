@@ -3,11 +3,13 @@ import css from "./BurderMenue.module.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
 
 export default function BurderMenue({ closeMenu }) {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState(true);
 
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleLoginClick = () => {
     setShowLoginForm(true);
     closeMenu();
@@ -20,7 +22,7 @@ export default function BurderMenue({ closeMenu }) {
     setShowLoginForm(false);
     setShowRegistrationForm(false);
   };
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <div className={css.burgerMenue}>
       <ul className={css.container}>
@@ -35,34 +37,14 @@ export default function BurderMenue({ closeMenu }) {
           </NavLink>
         </li>
         <li>
-          {isLoggedIn ? (
+          {isLoggedIn && (
             <NavLink to="/favorite" className={css.link}>
               Favorite
             </NavLink>
-          ) : (
-            ""
           )}
         </li>
         <li>
-          <button
-            className={css.loginBtn}
-            type="button"
-            onClick={handleLoginClick}
-          >
-            <svg className={css.logoImage} width="28" height="28">
-              <use href="/sprite.svg#icon-log-in-01"></use>
-            </svg>
-            Log in
-          </button>
-        </li>
-        <li>
-          <button
-            className={css.registrationBtn}
-            type="button"
-            onClick={handleRegistrationClick}
-          >
-            Registration
-          </button>
+          <RegistrationBtn />
         </li>
       </ul>
     </div>

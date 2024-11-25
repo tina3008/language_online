@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./CardHead.module.css";
 import { LuBookOpen } from "react-icons/lu";
@@ -7,26 +6,23 @@ import { addToFavorites, removeFromFavorites } from "../../redux/filters/slice";
 
 export default function CardHead({ teacher }) {
   const { id, rating, price_per_hour, lessons_done } = teacher;
-
   const dispatch = useDispatch();
-
   const favorites = useSelector((state) => state.filters.favorites);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isFavorite = favorites.includes(id);
 
-  // const isFavorite = favorites.some((favorite) => favorite.id === id);
-const isFavorite = favorites.includes(id);
-const handleClick = () => {
-  if (!isLoggedIn) {
-    alert("Only authorized users can perform this action.");
-    return;
-  }
+  const handleClick = () => {
+    if (!isLoggedIn) {
+      alert("Only authorized users can perform this action.");
+      return;
+    }
 
-  if (isFavorite) {
-    dispatch(removeFromFavorites(id)); // Используем индекс
-  } else {
-    dispatch(addToFavorites(id)); // Используем индекс
-  }
-};
+    if (isFavorite) {
+      dispatch(removeFromFavorites(id));
+    } else {
+      dispatch(addToFavorites(id));
+    }
+  };
 
   return (
     <div className={css.headCard}>

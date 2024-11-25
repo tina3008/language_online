@@ -13,13 +13,12 @@ export default function LangBlock({ teacher, showDetails }) {
 
   const dispatch = useDispatch();
   const activeModal = useSelector(selectActiveModal);
-  
+
   const handleSubmit = (values, actions) => {
     dispatch(openModal("langLevel"));
     actions.resetForm();
     console.log("activeModal:", activeModal);
   };
-
 
   const initialValues = {
     levels: showDetails && levels.includes("A1 Beginner") ? "A1 Beginner" : "",

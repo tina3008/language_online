@@ -184,13 +184,13 @@
     display: flex;
     padding: 98px 64px 0 64px;
     justify-content: center;
-    flex-direction: column; 
+    flex-direction: column;
   }
   .title {
     width: 548px;
     margin-bottom: 32px;
     text-align: center;
-     margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
   }
 
@@ -230,9 +230,9 @@
 
   .txtHome {
     text-align: left;
-     margin-left: 0;
+    margin-left: 0;
   }
-  .homeBtn{
-     margin-left: 0;
+  .homeBtn {
+    margin-left: 0;
   }
 }

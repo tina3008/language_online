@@ -50,7 +50,7 @@ export default function RegistrationForm({ closeMenu }) {
   }, [activeModal]);
 
   if (activeModal !== "registration") return null;
- 
+
   const handleSubmit = (values, actions) => {
     dispatch(register(values))
       .unwrap()
@@ -60,7 +60,7 @@ export default function RegistrationForm({ closeMenu }) {
           position: "top-center",
         });
         actions.resetForm();
-        handleClose(); 
+        handleClose();
       })
       .catch((err) => {
         toast(`Registration failed: ${err.toString()}`, {
@@ -121,8 +121,7 @@ export default function RegistrationForm({ closeMenu }) {
                 placeholder="Email"
               />
               <ErrorMessage name="email" className={css.errorMessage} />
-
-             <PasswordField/>
+              <PasswordField />
             </div>
             <button type="submit" className={css.btn}>
               Sign Up

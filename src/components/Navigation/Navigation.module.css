@@ -1,6 +1,7 @@
 .header {
   display: block;
   margin: 0 auto;
+  height: 68px;
 }
 .wrapper {
   display: flex;
@@ -11,7 +12,11 @@
   color: var(--text-color-main);
   letter-spacing: -0.02em;
 }
-
+.fixedWrapper {
+  position: fixed;
+  background: var(--text-color-white);
+  z-index: 1000;
+}
 .logo {
   display: inline-flex;
   column-gap: 8px;
@@ -32,99 +37,78 @@
   display: inline-flex;
   align-items: center;
 }
-.registrationBtn {
-  border-radius: 12px;
-  padding: 14px 39px;
-  color: var(--text-color-white);
-  background-color: var(--text-color-main);
-  font-weight: 700;
+
+.link {
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
 }
 
-.registrationBtn:hover,  :focus, :active{
-  border: none; 
-   background-color: var(--text-color-main);
-}
-.loginBtn {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
-  background-color: transparent;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
-  column-gap: 8px;
-  padding: 14px 16px;
-}
-
-.loginBtn:hover, :focus, :active{
-  border: none; 
-background-color: var(--text-color-white)
-}
-
-.link{
-font-weight: 400;
-font-size: 16px;
-line-height: 1.25;
-}
-
-.hidden{
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	border: 0;
-	padding: 0;
-	white-space: nowrap;
-	clip-path: inset(100%);
-	clip: rect(0 0 0 0);
-	overflow: hidden;
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
+  .no-scroll {
+    overflow: hidden;
+  }
   .header {
     max-width: 320px;
     justify-content: space-between;
   }
   .burgerBtn {
-  display: flex;
-  fill: var(--text-color-main);
-  border: none;
-  padding: 0;
-  background-color: transparent;
-}
-.xImage{
-  stroke: var(--text-color-main);
-}
-.container{
-  display: none;
-}
-.autentification{
-  display: none;
-}
-}
+    display: flex;
+    fill: var(--text-color-main);
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+  .burgerBtn:hover,
+  .burgerBtn:focus,
+  .burgerBtn:active {
+    background: transparent;
+  }
 
+  .xImage {
+    stroke: var(--text-color-main);
+  }
+  .container {
+    display: none;
+  }
+  .autentification {
+    display: none;
+  }
+  .registrationBtn {
+    display: none;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .header {
-    width: 705px;  
+    width: 705px;
   }
-.burgerBtn{
-  display: none;
-}
-.logo{
-  margin-right: 100px;
-}
-
+  .burgerBtn {
+    display: none;
+  }
+  .logo {
+    margin-right: 100px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .header {
     width: 1204px;
   }
-  .logo{
-  margin-right: 128px;
-}
+  .logo {
+    margin-right: 128px;
+  }
 }

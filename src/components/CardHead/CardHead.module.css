@@ -13,7 +13,7 @@
   fill: none;
   stroke: var(--text-color-main);
   display: inline;
-  text-align: left
+  text-align: left;
 }
 .hurtButton {
   padding: none;
@@ -27,16 +27,13 @@
   opacity: 0.8;
 }
 
-.favorite{
-  stroke: red; 
-
+.favorite {
+  stroke: red;
 }
-
 
 .block {
   display: flex;
   flex-direction: row;
- 
 }
 
 .list {
@@ -74,8 +71,24 @@
   margin-right: 176px;
 }
 
-.bigBlock{
-    display: flex;
-     justify-content: left; 
-    
+.bigBlock {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+  .block {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bigBlock {
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .bigBlock {
+  }
 }

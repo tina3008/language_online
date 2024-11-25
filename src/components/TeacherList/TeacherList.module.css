@@ -8,7 +8,6 @@
   margin-top: 81px;
   font-family: var(--font-family);
   color: var(--text-color-main);
- 
 }
 
 .button {
@@ -21,13 +20,10 @@
 
 .card {
   display: flex;
-  flex-direction: row;
-  
   border: none;
   border-radius: 24px;
-padding: 24px;
-width: 1184px;
-background: var(--text-color-white);
+  background: var(--text-color-white);
+  position: relative;
 }
 .avatarWraper {
   border-radius: 50%;
@@ -50,67 +46,121 @@ background: var(--text-color-white);
   top: 18px;
   right: 18px;
 }
-.teacherName{
+.teacherName {
   font-weight: 500;
-font-size: 24px;
-line-height: 1;
-margin-bottom: 32px;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 32px;
 }
 
-.teachersInfo{
+.teachersInfo {
   display: flex;
   flex-direction: column;
   column-gap: 8px;
   margin-bottom: 16px;
 }
 
-.info{
+.info {
   display: flex;
   flex-direction: column;
- width: 968px;
- justify-content: left;
- 
+  width: 968px;
+  justify-content: left;
 }
 
-.leanguage{
+.leanguage {
   text-decoration: underline;
-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
-.langInfo{
+.langInfo {
   display: inline-flex;
 }
-.nameInfo{
+.nameInfo {
   font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-color: #8a8a89;
-text-decoration: none;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+  text-decoration: none;
 }
-.description{
-text-decoration: none;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
+.description {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.buttonMore{
+.buttonMore {
   font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-text-decoration: underline;
-text-decoration-skip-ink: none;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
   color: var(--text-color-main);
-margin-bottom: 32px;
-margin-left: 0;
-margin-right: auto;
-background: none;
-border: none;
-display: block;
-
+  margin-bottom: 32px;
+  margin-left: 0;
+  margin-right: auto;
+  background: none;
+  border: none;
+  display: block;
 }
 
+@media screen and (max-width: 767px) {
+  .fullPage {
+    display: block;
+    max-width: 320px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .list {
+    justify-content: center;
+    align-items: center;
+  }
+  .info {
+    width: 280px;
+  }
 
+  .teacherName {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+    max-width: 140px;
+  }
+}
 
-.lanBlock{
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .card {
+    flex-direction: column;
+    padding: 24px;
+    width: 720px;
+  }
+  .info {
+    width: 670px;
+  }
 
+  .teacherName {
+    position: absolute;
+    top: 70px;
+    left: 200px;
+  }
+  .list {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .card {
+    flex-direction: row;
+    width: 1184px;
+    padding: 24px;
+  }
+
+  .info {
+    width: 968px;
+  }
 }

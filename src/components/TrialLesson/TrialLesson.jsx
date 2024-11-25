@@ -5,7 +5,6 @@ import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
-
 export default function TrialLesson({ teacher }) {
   const { name, surname, avatar_url } = teacher;
   const dispatch = useDispatch();
@@ -61,10 +60,9 @@ export default function TrialLesson({ teacher }) {
           </div>
         </div>
         <h3 className={css.question}>
-           What is your main reason for learning English? 
+          What is your main reason for learning English?
         </h3>
         <FeedbackForm />
-  
       </div>
     </div>
   );

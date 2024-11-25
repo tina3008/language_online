@@ -16,7 +16,6 @@
   width: 339px;
   height: 339px;
   margin-top: 80px;
- 
 }
 
 @keyframes colorChangeMac {
@@ -25,16 +24,16 @@
     background: #d08f38;
   }
   20% {
-    background: #183E49;
+    background: #183e49;
   }
   40% {
-    background: #314B6E;
+    background: #314b6e;
   }
   60% {
-    background: #B03F3E;
+    background: #b03f3e;
   }
   80% {
-    background: #E17650;
+    background: #e17650;
   }
 }
 .animateColorMac {
@@ -48,7 +47,6 @@
   position: absolute;
   bottom: 0%;
   animation: colorChangeMac 10s infinite;
-
 }
 
 @keyframes colorChangeLite {
@@ -73,48 +71,43 @@
   animation: colorChangeLite 20s infinite;
 }
 .imgApple {
-  /* color: linear-gradient(180deg, #fbe9ba 0%, #e7c885 100%); */
- 
   width: 46px;
   height: 56px;
   fill: var(--color2);
   display: flex;
   margin: 65px auto;
-   animation: colorChangeLite 10s infinite;
-
+  animation: colorChangeLite 10s infinite;
 }
 
 @media screen and (max-width: 767px) {
   .homeImg {
-  display: flex;
-  justify-content: center;
-  max-width: 300px;
-  height: 280px;
-}
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+    height: 280px;
+  }
 
-.imgHead {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
-  height: 250px;
-  margin-top: 20px;
-}
-.imgMac {
-  width: 220px;
-  height: 100px;
-}
-.imgApple { 
-  width: 26px;
-  height: 36px;
-  margin: 35px auto;
-}
+  .imgHead {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+  }
+  .imgMac {
+    width: 220px;
+    height: 100px;
+  }
+  .imgApple {
+    width: 26px;
+    height: 36px;
+    margin: 35px auto;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  
 }
 
 @media screen and (min-width: 1440px) {
-  
 }

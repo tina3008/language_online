@@ -16,14 +16,14 @@ const filterSlice = createSlice({
     },
 
     addToFavorites(state, action) {
-      const id = action.payload; // id преподавателя
+      const id = action.payload;
       if (!state.favorites.includes(id)) {
         state.favorites.push(id);
         localStorage.setItem("favorites", JSON.stringify(state.favorites));
       }
     },
     removeFromFavorites(state, action) {
-      const id = action.payload; // id преподавателя
+      const id = action.payload; 
       state.favorites = state.favorites.filter(
         (favoriteId) => favoriteId !== id
       );

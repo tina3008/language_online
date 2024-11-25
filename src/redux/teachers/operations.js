@@ -1,17 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-  // axios.defaults.baseURL = "https://node-teachers.onrender.com";
-
 export const fetchTeachers = createAsyncThunk(
   "teachers/fetchAll",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(
         "https://node-teachers.onrender.com/teachers"
-      );
-      console.log(response.data);
-      
+      );      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -78,11 +78,11 @@ export default function FilterBox() {
             }
           >
             <option value="">All</option>
-            <option value="25">30$</option>
-            <option value="27">28$</option>
-            <option value="28">27$</option>
-            <option value="30">27$</option>
-            <option value="35">27$</option>
+            <option value="25">25$</option>
+            <option value="27">27$</option>
+            <option value="28">28$</option>
+            <option value="30">30$</option>
+            <option value="35">35$</option>
           </select>
         </div>
       </div>

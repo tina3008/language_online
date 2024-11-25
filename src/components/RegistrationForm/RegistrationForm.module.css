@@ -85,13 +85,26 @@
   background-color: none;
 }
 
-.closeButton{
- position: absolute;
- top: 20px;
- right: 20px;
- width: 32px;
- background: none;
- stroke: var(--text-color-main);
- border: transparent;
- owerhidden: none
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  background: none;
+  stroke: var(--text-color-main);
+  border: transparent;
+  owerhidden: none;
+}
+
+@media screen and (max-width: 767px) {
+  .registrationPopUp {
+    display: block;
+    max-width: 320px;
+    border-radius: 30px;
+    background: var(--text-color-white);
+    padding: 64px 12px;
+    font-family: var(--font-family);
+    color: var(--text-color-main);
+    position: fixed;
+  }
 }

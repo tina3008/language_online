@@ -1,46 +1,86 @@
-.filtresBlock{
-    display: inline-flex;
-    margin-top: 96px;
-    margin-left: 82px;
-    column-gap: 20px;
+.filtresBlock {
+  display: inline-flex;
+  margin-top: 96px;
+  margin-left: 82px;
+  column-gap: 20px;
 }
 
-.fieldBlock{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;    
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.filtrlable{
-
-font-weight: 500;
-font-size: 14px;
-line-height: 1.28571;
-color: #8a8a89;
+.filtrlable {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #8a8a89;
 }
 
+.filtrFieldPadding {
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 14px;
 
-.filtrFieldPadding{
+  height: 48px;
+  background: #fff;
+}
+
+.filtrField {
+  border-radius: 14px;
+  height: 48px;
+  background: #fff;
+  border: 0px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: var(--text-color-main);
+  appearance: none; /* Убираем стандартный стиль браузера */
+}
+
+.filtrField option {
+  background: #fff;
+  color: rgba(18, 20, 23, 0.2);
+}
+
+.filtrField option:hover {
+  color: var(--text-color-main);
+  background: #fff;
+}
+
+.filtrField option:checked {
+  color: var(--text-color-main);
+}
+
+.filtrField:hover,
+:fockus,
+:active {
+  border: none;
+  outline: none;
+  background: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .filtresBlock {
+    max-width: 300px;
     display: block;
-padding-left: 16px;
-padding-right: 16px;
-border-radius: 14px;
-/* width: 221px; */
-height: 48px;
-background: #fff;
-
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 16px auto;
+  }
 }
 
-.filtrField{
-border-radius: 14px;
-/* width: 190px; */
-height: 48px;
-background: #fff;
-border: 0px solid transparent;
-outline: none;
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .filtresBlock {
+    margin: 16px auto;
+  }
 }
 
-.filtrField:hover, :fockus, :active{
-    border: none;
-    outline: none;
+@media screen and (min-width: 1440px) {
+  .filtresBlock {
+    margin-left: 82px;
+  }
 }
