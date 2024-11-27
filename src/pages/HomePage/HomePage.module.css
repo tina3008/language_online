@@ -126,8 +126,11 @@
   margin-bottom: 98px;
 }
 .homeBtn:hover,
-:focus {
+.homeBtn:focus {
   background: var(--color11);
+  animation: none;
+    border: none;
+  overflow: none;
 }
 
 .homeFooter {

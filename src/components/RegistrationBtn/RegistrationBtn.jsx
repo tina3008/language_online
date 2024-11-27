@@ -34,7 +34,7 @@ export default function RegistrationBtn() {
   };
 
   return (
-    <>
+    <div className={css.autentification}>
       {isLoggedIn ? (
         <button
           className={css.registrationBtn}
@@ -44,7 +44,7 @@ export default function RegistrationBtn() {
           Log Out
         </button>
       ) : (
-        <div className={css.autentification}>
+        <>
           <button className={css.loginBtn} type="button" onClick={handleLogin}>
             <svg className={css.logoImage} width="28" height="28">
               <use href="/sprite.svg#icon-log-in-01"></use>
@@ -58,10 +58,10 @@ export default function RegistrationBtn() {
           >
             Registration
           </button>
-        </div>
+        </>
       )}
       {activeModal === "registration" && <RegistrationForm />}
       {activeModal === "login" && <LoginForm />}
-    </>
+    </div>
   );
 }

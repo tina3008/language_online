@@ -34,20 +34,35 @@ export default function Navigation() {
         <nav>
           <ul className={css.container}>
             <li>
-              <NavLink to="/" className={css.link}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `${css.link} ${isActive ? css.active : ""}`
+                }
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/teachers" className={css.link}>
+              <NavLink
+                to="/teachers"
+                className={({ isActive }) =>
+                  `${css.link} ${isActive ? css.active : ""}`
+                }
+              >
                 Teachers
               </NavLink>
             </li>
             <li>
-              {isLoggedIn && (
-                <NavLink to="/favorite" className={css.link}>
+              {isLoggedIn ? (
+                <NavLink
+                  to="/favorite"
+                  className={css.link}             
+                >
                   Favorite
                 </NavLink>
+              ) : (
+                <span className={css.placeholder}></span> 
               )}
             </li>
           </ul>
