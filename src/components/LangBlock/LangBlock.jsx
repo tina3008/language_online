@@ -64,7 +64,7 @@ export default function LangBlock({ teacher, showDetails }) {
             </Form>
           );
         }}
-      </Formik>  
+      </Formik>
       {activeModal === "langLevel" && <TrialLesson teacher={teacher} />}
     </div>
   );

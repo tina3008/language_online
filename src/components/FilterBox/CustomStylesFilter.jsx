@@ -1,5 +1,3 @@
-import Select from "react-select";
-
 export const CustomStyles = (width) => ({
   control: (provided, state) => ({
     ...provided,
@@ -39,7 +37,6 @@ export const CustomStyles = (width) => ({
     },
   }),
 
-  
   dropdownIndicator: (provided, state) => ({
     ...provided,
     color: "var(--text-color-main)",
@@ -52,5 +49,3 @@ export const CustomStyles = (width) => ({
     display: "none",
   }),
 });
-
-

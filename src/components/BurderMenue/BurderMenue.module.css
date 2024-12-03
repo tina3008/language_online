@@ -28,6 +28,9 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 1.25;
+    justify-content: center;
+    align-items: center;
+     display: inline-flex;
   }
 
   .loginBtn {

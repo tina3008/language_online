@@ -24,9 +24,7 @@ export default function CardHead({ teacher }) {
     if (isFavorite) {
       dispatch(removeFromFavorites(id));
     } else {
-      dispatch(addToFavorites(id));
-  
-      
+      dispatch(addToFavorites(id));      
     }
   };
 

@@ -39,7 +39,7 @@ export default function FeedbackForm({ handleClose }) {
   const phoneFieldId = useId();
   const levelFieldId = useId();
 
-  const handleSubmit = (values, actions) => { 
+  const handleSubmit = (values, actions) => {
     toast("Registration successful!", {
       style: { background: "white", color: "black" },
       position: "top-center",

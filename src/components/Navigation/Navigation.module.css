@@ -16,11 +16,13 @@
   position: fixed;
   background: var(--text-color-white);
   z-index: 1000;
+width: 320px;
+align-items: center;
+justify-content: space-between;
 }
 .logo {
   display: inline-flex;
   column-gap: 8px;
-  /* margin-right: 128px; */
   transition: transform 0.3s ease;
 }
 .logo:hover,
@@ -139,7 +141,6 @@
   .burgerBtn {
     display: none;
   }
-
 }
 
 @media screen and (min-width: 1440px) {

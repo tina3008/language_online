@@ -1,5 +1,4 @@
 import css from "./HomeImg.module.css";
-import { FaApple } from "react-icons/fa";
 
 export default function HomeImg() {
   return (

@@ -1,14 +1,13 @@
 div .react-select__control {
-  background-color: var(--text-color-white); 
+  background-color: var(--text-color-white);
   border: none;
   transition: var(--animation-cubicBezier);
-    border-radius: 14px !important;
+  border-radius: 14px !important;
   overflow: hidden;
 }
 
 .react-select__input {
-  color: var(--text-color-main); 
- 
+  color: var(--text-color-main);
 }
 .react-select__menu .react-select__option--is-focused {
   background-color: var(--text-color-white) !important;
@@ -17,7 +16,7 @@ div .react-select__control {
 .react-select__menu .react-select__option--is-selected {
   background-color: var(--text-color-white) !important;
   color: var(--text-color-main);
-    overflow: hidden;
+  overflow: hidden;
   border-radius: 14px !important;
 }
 
@@ -25,7 +24,7 @@ div .react-select__control {
 .react-select__option {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
   border-radius: 14px !important;
 }
 
@@ -36,9 +35,7 @@ div .react-select__control {
   color: var(--text-color-main) !important;
 }
 
-
 .react-select__menu {
   overflow: hidden;
   border-radius: 14px !important;
 }
-

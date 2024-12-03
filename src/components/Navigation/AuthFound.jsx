@@ -22,7 +22,7 @@ export default function AuthFound() {
 
   return (
     <div>
-      {userName && <p className={css.authName}>Welcome,{userName}!</p>}
+      {userName && <p className={css.authName}>Welcome,<br/>{userName}!</p>}
     </div>
   );
 }

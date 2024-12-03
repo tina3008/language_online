@@ -18,41 +18,6 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-// export const register = createAsyncThunk(
-//   "auth/register",
-//   async (newUser, thunkAPI) => {
-//     const { email, password, name } = newUser;
-//     const auth = authFirebase;
-
-//     try {
-//       const userCredential = await createUserWithEmailAndPassword(
-//         auth,
-//         email,
-//         password
-//       );
-//       const user = userCredential.user;
-
-//       await updateProfile(user, { displayName: name });
-//      await user.reload();
-
-//       const updatedUser = auth.currentUser;
-
-//       const idToken = await userCredential.user.getIdToken();
-//       setAuthHeader(idToken);
-
-//       return {
-//         idToken:idToken,
-//         uid: updatedUser.uid,
-//         email: updatedUser.email,
-//         displayName: updatedUser.displayName,
-//       };
-//     } catch (error) {
-//       console.error("Error registering user:", error.message);
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const register = createAsyncThunk(
   "auth/register",
   async (newUser, thunkAPI) => {

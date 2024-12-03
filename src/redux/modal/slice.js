@@ -18,6 +18,5 @@ const modalSlice = createSlice({
 export const { openModal, closeModal } = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
 
-// Селекторы
 export const selectActiveModal = (state) => state.modal.activeModal;
 export const selectIsModalOpen = (state) => state.modal.activeModal;
