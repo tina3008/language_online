@@ -1,8 +1,13 @@
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getAuth, signOut } from "firebase/auth";
-
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signOut,
+} from "firebase/auth";
+import { authFirebase } from "../../firebase/firebase";
 const API_KEY = "AIzaSyCkxPo19SKC6V2-8LbTZ2GtxLW5CqWoePs";
 
 const setAuthHeader = (token) => {
@@ -13,30 +18,90 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+// export const register = createAsyncThunk(
+//   "auth/register",
+//   async (newUser, thunkAPI) => {
+//     const { email, password, name } = newUser;
+//     const auth = authFirebase;
+
+//     try {
+//       const userCredential = await createUserWithEmailAndPassword(
+//         auth,
+//         email,
+//         password
+//       );
+//       const user = userCredential.user;
+
+//       await updateProfile(user, { displayName: name });
+//      await user.reload();
+
+//       const updatedUser = auth.currentUser;
+
+//       const idToken = await userCredential.user.getIdToken();
+//       setAuthHeader(idToken);
+
+//       return {
+//         idToken:idToken,
+//         uid: updatedUser.uid,
+//         email: updatedUser.email,
+//         displayName: updatedUser.displayName,
+//       };
+//     } catch (error) {
+//       console.error("Error registering user:", error.message);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const register = createAsyncThunk(
   "auth/register",
   async (newUser, thunkAPI) => {
+    const { email, password, name } = newUser;
+    const auth = authFirebase;
+
     try {
-      const res = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
-        newUser
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
-      setAuthHeader(res.data.idToken);
-      return res.data;
+      const user = userCredential.user;
+      await updateProfile(user, { displayName: name });
+      const idToken = await userCredential.user.getIdToken(); 
+      setAuthHeader(idToken);
+  
+      return {
+        idToken: idToken,
+        uid: user.uid,
+        email: user.email,
+        displayName: name, 
+      };
     } catch (error) {
+      console.error("Error registering user:", error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
+
 export const logIn = createAsyncThunk(
   "auth/login",
   async (userInfo, thunkAPI) => {
     try {
-      const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
-      const res = await axios.post(url, userInfo);
-      setAuthHeader(res.data.idToken);
-      return res.data;
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        userInfo.email,
+        userInfo.password
+      );
+      const idToken = await userCredential.user.getIdToken();
+
+      setAuthHeader(idToken);
+      return {
+        idToken,
+        email: userCredential.user.email,
+        displayName: userCredential.user.displayName,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -71,4 +136,3 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
-

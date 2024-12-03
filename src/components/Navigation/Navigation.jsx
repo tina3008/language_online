@@ -1,11 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useEffect, useState } from "react";
 import BurderMenue from "../BurderMenue/BurderMenue";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import AuthFound from "./AuthFound";
 
 import Loader from "../Loader/Loader";
 import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
@@ -57,16 +58,19 @@ export default function Navigation() {
               {isLoggedIn ? (
                 <NavLink
                   to="/favorite"
-                  className={css.link}             
+                  className={({ isActive }) =>
+                    `${css.link} ${isActive ? css.active : ""}`
+                  }
                 >
                   Favorite
                 </NavLink>
               ) : (
-                <span className={css.placeholder}></span> 
+                <span className={css.placeholder}></span>
               )}
             </li>
           </ul>
         </nav>
+        <AuthFound />
         <div className={css.registrationBtn}>
           <RegistrationBtn />
         </div>

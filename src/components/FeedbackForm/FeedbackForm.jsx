@@ -3,8 +3,9 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 
-export default function FeedbackForm() {
+export default function FeedbackForm({ handleClose }) {
   const FeedbackSchema = Yup.object().shape({
     username: Yup.string()
       .min(2, "Too Short!")
@@ -38,9 +39,13 @@ export default function FeedbackForm() {
   const phoneFieldId = useId();
   const levelFieldId = useId();
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const handleSubmit = (values, actions) => { 
+    toast("Registration successful!", {
+      style: { background: "white", color: "black" },
+      position: "top-center",
+    });
     actions.resetForm();
+    handleClose();
   };
 
   return (
@@ -93,7 +98,7 @@ export default function FeedbackForm() {
           />
         </div>
         <div className={css.fieldBlock}>
-          <div>
+          <div className={css.fieldPosition}>
             <Field
               type="text"
               name="username"
@@ -108,7 +113,7 @@ export default function FeedbackForm() {
             />
           </div>
 
-          <div>
+          <div className={css.fieldPosition}>
             <Field
               type="email"
               name="email"
@@ -123,7 +128,7 @@ export default function FeedbackForm() {
             />
           </div>
 
-          <div>
+          <div className={css.fieldPosition}>
             <Field
               type="tel"
               name="phone"
@@ -142,6 +147,7 @@ export default function FeedbackForm() {
         <button type="submit" className={css.submtBook}>
           Book
         </button>
+        <Toaster />
       </Form>
     </Formik>
   );

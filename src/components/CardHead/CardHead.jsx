@@ -3,6 +3,7 @@ import css from "./CardHead.module.css";
 import { LuBookOpen } from "react-icons/lu";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { addToFavorites, removeFromFavorites } from "../../redux/filters/slice";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function CardHead({ teacher }) {
   const { id, rating, price_per_hour, lessons_done } = teacher;
@@ -13,7 +14,10 @@ export default function CardHead({ teacher }) {
 
   const handleClick = () => {
     if (!isLoggedIn) {
-      alert("Only authorized users can perform this action.");
+        toast("Only authorized users can perform this action!", {
+          style: { background: "white", color: "red" },
+          position: "top-center",
+        });     
       return;
     }
 
@@ -21,6 +25,8 @@ export default function CardHead({ teacher }) {
       dispatch(removeFromFavorites(id));
     } else {
       dispatch(addToFavorites(id));
+  
+      
     }
   };
 
@@ -60,6 +66,7 @@ export default function CardHead({ teacher }) {
           <use href="/sprite.svg#icon-heart"></use>
         </svg>
       </button>
+      <Toaster />
     </div>
   );
 }

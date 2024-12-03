@@ -1,7 +1,6 @@
 .header {
   display: block;
   margin: 20px auto;
-  /* height: 68px; */
 }
 .wrapper {
   display: flex;
@@ -11,8 +10,7 @@
   font-family: var(--font-family);
   color: var(--text-color-main);
   letter-spacing: -0.02em;
-
-  height: 48px;
+ 
 }
 .fixedWrapper {
   position: fixed;
@@ -23,7 +21,14 @@
   display: inline-flex;
   column-gap: 8px;
   /* margin-right: 128px; */
+  transition: transform 0.3s ease;
 }
+.logo:hover,
+.logo:focus {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
 .logoTxt {
   font-weight: 500;
   font-size: 20px;
@@ -34,7 +39,7 @@
   display: inline-flex;
   column-gap: 28px;
   width: 220px;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .autentification {
@@ -46,18 +51,19 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-   transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
+  display: inline-flex;
 }
 
 .link:hover,
-.link:focus{
-background-color: transparent;
-transform: scale(1.1);
-text-decoration: underline;
+.link:focus {
+  background-color: transparent;
+  transform: scale(1.1);
+  text-decoration: underline;
 }
 .active {
-background-color: transparent;
-text-decoration: underline;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .hidden {
@@ -74,8 +80,18 @@ text-decoration: underline;
 }
 
 .placeholder {
-  visibility: hidden; 
+  visibility: hidden;
 }
+
+.authName {
+  max-width: 80px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow: hidden;
+  font-size: 16px;
+}
+
 @media screen and (max-width: 767px) {
   .no-scroll {
     overflow: hidden;
@@ -90,7 +106,7 @@ text-decoration: underline;
     border: none;
     padding: 0;
     background: transparent;
-     transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
   .burgerBtn:hover,
   .burgerBtn:focus,
@@ -111,8 +127,11 @@ text-decoration: underline;
   .registrationBtn {
     display: none;
   }
-}
 
+  .wrapper {
+  height: 48px;
+}
+}
 @media screen and (min-width: 768px) {
   .header {
     width: 705px;
@@ -120,9 +139,7 @@ text-decoration: underline;
   .burgerBtn {
     display: none;
   }
-  /* .logo {
-    margin-right: 100px;
-  } */
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -132,4 +149,7 @@ text-decoration: underline;
   .logo {
     margin-right: 128px;
   }
+  .authName {
+  max-width: 380px;
+}
 }

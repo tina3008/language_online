@@ -5,8 +5,8 @@
   /* height: 100%; */
   font-family: var(--font-family);
   color: var(--text-color-main);
-  margin: 0 auto;
-  margin-bottom: 32px;
+  margin: 0 auto 32px auto;
+  
 }
 .homeMain {
   display: flex;

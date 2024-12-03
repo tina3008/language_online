@@ -1,8 +1,13 @@
-import css from "./FilterBox.module.css";
+
+import "./ReactSelect.css";
+import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { setStatusFilter } from "../../redux/filters/slice";
 import { selectFilter } from "../../redux/teachers/selectors";
 import { useId } from "react";
+
+import css from "./FilterBox.module.css";
+import { CustomStyles } from "./CustomStylesFilter";
 
 export default function FilterBox() {
   const dispatch = useDispatch();
@@ -16,74 +21,99 @@ export default function FilterBox() {
     dispatch(setStatusFilter({ [key]: value }));
   };
 
+  const languageOptions = [
+    { value: "", label: "All" },
+    { value: "Spanish", label: "Spanish" },
+    { value: "French", label: "French" },
+    { value: "Mandarin Chinese", label: "Mandarin Chinese" },
+    { value: "Italian", label: "Italian" },
+    { value: "German", label: "German" },
+    { value: "Korean", label: "Korean" },
+    { value: "English", label: "English" },
+  ];
+
+  const levelOptions = [
+    { value: "", label: "All" },
+    { value: "A1 Beginner", label: "A1 Beginner" },
+    { value: "A2 Elementary", label: "A2 Elementary" },
+    { value: "B1 Intermediate", label: "B1 Intermediate" },
+    { value: "B2 Upper-Intermediate", label: "B2 Upper-Intermediate" },
+    { value: "C1 Advanced", label: "C1 Advanced" },
+    { value: "C2 Proficient", label: "C2 Proficient" },
+  ];
+
+  const priceOptions = [
+    { value: "", label: "All" },
+    { value: "25", label: "25" },
+    { value: "27", label: "27" },
+    { value: "28", label: "28" },
+    { value: "30", label: "30" },
+    { value: "35", label: "35" },
+  ];
+
   return (
     <div className={css.filtresBlock}>
       <div className={css.fieldBlock}>
         <label htmlFor={languageFieldId} className={css.filtrlable}>
           Languages
         </label>
-        <div className={css.filtrFieldPadding} width="221">
-          <select
-            className={css.filtrField}
-            name="languages"
+        <div className={css.filtrFieldPadding}>
+          <Select
             id={languageFieldId}
-            value={filters.values.languages}
-            onChange={(e) => handleFilterChange("languages", e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="Spanish">Spanish</option>
-            <option value="French">French</option>
-            <option value="Mandarin Chinese">Mandarin Chinese</option>
-            <option value="Italian">Italian</option>
-            <option value="German">German</option>
-            <option value="Korean">Korean</option>
-            <option value="English">English</option>
-          </select>
+            options={languageOptions}
+            className={css.filtrField}
+            classNamePrefix="react-select"
+            styles={CustomStyles("221px")}
+            value={languageOptions.find(
+              (option) => option.value === filters.values.languages
+            )}
+            onChange={(selected) =>
+              handleFilterChange("languages", selected.value)
+            }
+          />
         </div>
       </div>
-      <div className={css.fieldBlock} width="198">
+
+      <div className={css.fieldBlock}>
         <label htmlFor={levelFieldId} className={css.filtrlable}>
           Level of knowledge
         </label>
         <div className={css.filtrFieldPadding}>
-          <select
-            className={css.filtrField}
-            name="level"
+          <Select
             id={levelFieldId}
-            value={filters.values.levels}
-            onChange={(e) => handleFilterChange("levels", e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="A1 Beginner">A1 Beginner</option>
-            <option value="A2 Elementary">A2 Elementary</option>
-            <option value="B1 Intermediate">B1 Intermediate</option>
-            <option value="B2 Upper-Intermediate">B2 Upper-Intermediate</option>
-            <option value="C1 Advanced">C1 Advanced</option>
-            <option value="C2 Proficient">C2 Proficient</option>
-          </select>
+            options={levelOptions}
+            className={css.filtrField}
+            classNamePrefix="react-select"
+            styles={CustomStyles("198px")}
+            value={levelOptions.find(
+              (option) => option.value === filters.values.levels
+            )}
+            onChange={(selected) =>
+              handleFilterChange("levels", selected.value)
+            }
+          />
         </div>
       </div>
+
       <div className={css.fieldBlock}>
         <label htmlFor={priceFieldId} className={css.filtrlable}>
           Price
         </label>
-        <div className={css.filtrFieldPadding} width="124">
-          <select
-            className={css.filtrField}
-            name="price"
+        <div className={css.filtrFieldPadding} width="124px">
+          <Select
             id={priceFieldId}
-            value={filters.values.price_per_hour}
-            onChange={(e) =>
-              handleFilterChange("price_per_hour", e.target.value)
+            styles={CustomStyles("124px")}
+            classNamePrefix="react-select"
+            options={priceOptions}
+            className={css.filtrField}
+            value={priceOptions.find(
+              (option) => option.value === `${filters.values.price_per_hour}`
+            )}
+            onChange={(selected) =>
+              handleFilterChange("price_per_hour", selected.value)
             }
-          >
-            <option value="">All</option>
-            <option value="25">25$</option>
-            <option value="27">27$</option>
-            <option value="28">28$</option>
-            <option value="30">30$</option>
-            <option value="35">35$</option>
-          </select>
+          />
+          <p className={css.dollarSign}>$</p>
         </div>
       </div>
     </div>

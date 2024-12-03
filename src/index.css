@@ -31,13 +31,9 @@ a {
   cursor: pointer;
   outline: none;
   border: none;
-  transition: transform 0.3s ease;
+
 }
 
-a:hover,
-a:focus {
-  transform: scale(1.1);
-}
 button {
   cursor: pointer;
 }

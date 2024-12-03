@@ -8,6 +8,7 @@
   margin-top: 81px;
   font-family: var(--font-family);
   color: var(--text-color-main);
+  background-color: transparent;
 }
 
 .button {

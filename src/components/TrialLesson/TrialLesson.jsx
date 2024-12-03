@@ -8,6 +8,7 @@ import FeedbackForm from "../FeedbackForm/FeedbackForm";
 export default function TrialLesson({ teacher }) {
   const { name, surname, avatar_url } = teacher;
   const dispatch = useDispatch();
+
   const activeModal = useSelector(selectActiveModal);
 
   const handleClose = () => {
@@ -20,12 +21,12 @@ export default function TrialLesson({ teacher }) {
         handleClose();
       }
     };
-
     if (activeModal) {
+      document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     }
-
     return () => {
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeModal]);
@@ -62,7 +63,7 @@ export default function TrialLesson({ teacher }) {
         <h3 className={css.question}>
           What is your main reason for learning English?
         </h3>
-        <FeedbackForm />
+        <FeedbackForm handleClose={handleClose} />
       </div>
     </div>
   );

@@ -19,13 +19,14 @@
   font-size: 16px;
   line-height: 1.25;
   width: 166px;
+  font-family: var(--font-family);
 }
 
 .registrationBtn:hover,
 :focus,
 :active {
   border: none;
-    background-color: var(--text-color-main);
+  background-color: var(--text-color-main);
 }
 .loginBtn {
   font-weight: 700;
@@ -38,6 +39,7 @@
   display: inline-flex;
   column-gap: 8px;
   padding: 14px 8px;
+  font-family: var(--font-family);
 }
 
 .loginBtn:hover,
@@ -45,6 +47,14 @@
 :active {
   border: none;
   background-color: var(--text-color-white);
+}
+
+button {
+  transition: transform 0.3s ease;
+}
+button:hover,
+button:focus {
+  transform: scale(1.1);
 }
 @media screen and (max-width: 767px) {
   .autentification {
@@ -62,12 +72,4 @@
     justify-content: center;
     gap: 8px;
   }
-}
-
-button{
-  transition: transform 0.3s ease;
-}
-button:hover,
-button:focus {
-  transform: scale(1.1); 
 }

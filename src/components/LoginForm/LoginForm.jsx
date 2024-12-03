@@ -10,7 +10,7 @@ import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import PasswordField from "../RegistrationForm/PasswordField/PasswordField";
 
-export default function loginForm({ closeMenu }) {
+export default function loginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,12 +37,12 @@ export default function loginForm({ closeMenu }) {
         handleClose();
       }
     };
-
     if (activeModal) {
+      document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     }
-
     return () => {
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeModal]);
@@ -95,18 +95,19 @@ export default function loginForm({ closeMenu }) {
         >
           <Form className={css.form} autoComplete="off">
             <div className={css.fialdStyle}>
-              <Field
-                type="email"
-                name="email"
-                className={css.field}
-                placeholder="Email"
-              />
-              <ErrorMessage
-                name="email"
-                className={css.errorMessage}
-                component="span"
-              />
-
+              <div className={css.fieldPosition}>
+                <Field
+                  type="email"
+                  name="email"
+                  className={css.field}
+                  placeholder="Email"
+                />
+                <ErrorMessage
+                  name="email"
+                  className={css.errorMessage}
+                  component="span"
+                />
+              </div>
               <PasswordField />
             </div>
             <button type="submit" className={css.btn}>

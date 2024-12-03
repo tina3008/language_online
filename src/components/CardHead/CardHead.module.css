@@ -28,7 +28,8 @@
 }
 
 .favorite {
-  stroke: red;
+  fill: var(--color1);
+  stroke: transparent;
 }
 
 .block {

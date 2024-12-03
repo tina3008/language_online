@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .registrationPopUp {
@@ -59,8 +59,15 @@
 
 .errorMessage {
   color: red;
+  position: absolute;
+  top: 50px;
+  left: 20px;
 }
-
+.fieldPosition {
+  display: inherit;
+  width: 100%;
+  position: relative;
+}
 .fialdStyle {
   display: flex;
   flex-direction: column;
@@ -78,12 +85,15 @@
   font-size: 16px;
   line-height: 1.375;
   background-color: transparent;
+  width: 100%;
 }
 
 .field:hover,
-:focus,
-:active {
-  background-color: none;
+.field:focus,
+.field:active {
+  background-color: #fff;
+  outline: none;
+    border: 1px solid rgba(18, 20, 23, 0.1);
 }
 
 .closeButton {

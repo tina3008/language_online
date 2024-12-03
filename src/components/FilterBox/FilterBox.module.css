@@ -3,12 +3,15 @@
   margin-top: 96px;
   margin-left: 82px;
   column-gap: 20px;
+  font-family: var(--font-family);
+  background-color: transparent;
 }
 
 .fieldBlock {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: transparent;
 }
 
 .filtrlable {
@@ -16,51 +19,41 @@
   font-size: 14px;
   line-height: 1.28571;
   color: #8a8a89;
+  background-color: transparent;
+}
+.filtrField {
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  appearance: none;
+  font-family: var(--font-family);
+  border-radius: 14px;
+}
+
+.filtrField:hover,
+.filtrField::fockus,
+.filtrField:active {
+  border: none;
 }
 
 .filtrFieldPadding {
   display: block;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 14px;
-
-  height: 48px;
-  background: #fff;
+  position: relative;
+background: #F8F8F8;
 }
 
-.filtrField {
-  border-radius: 14px;
-  height: 48px;
-  background: #fff;
-  border: 0px solid transparent;
-  outline: none;
+
+.dollarSign {
+  position: absolute;
+  top: 14px;
+  left: 35px;
+  color: var(--text-color-main);
+  font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11111;
-  color: var(--text-color-main);
-  appearance: none; /* Убираем стандартный стиль браузера */
-}
-
-.filtrField option {
-  background: #fff;
-  color: rgba(18, 20, 23, 0.2);
-}
-
-.filtrField option:hover {
-  color: var(--text-color-main);
-  background: #fff;
-}
-
-.filtrField option:checked {
-  color: var(--text-color-main);
-}
-
-.filtrField:hover,
-:fockus,
-:active {
-  border: none;
-  outline: none;
-  background: #fff;
+  z-index: 110;
 }
 
 @media screen and (max-width: 767px) {
@@ -84,3 +77,4 @@
     margin-left: 82px;
   }
 }
+

@@ -9,7 +9,7 @@ import { selectActiveModal } from "../../redux/modal/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import PasswordField from "./PasswordField/PasswordField";
 
-export default function RegistrationForm({ closeMenu }) {
+export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const validationControl = Yup.object().shape({
@@ -41,10 +41,11 @@ export default function RegistrationForm({ closeMenu }) {
     };
 
     if (activeModal) {
+      document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     }
-
     return () => {
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeModal]);
@@ -106,29 +107,32 @@ export default function RegistrationForm({ closeMenu }) {
         >
           <Form className={css.form} autoComplete="off">
             <div className={css.fialdStyle}>
-              <Field
-                type="text"
-                name="name"
-                className={css.field}
-                placeholder="Name"
-              />
-              <ErrorMessage
-                name="name"
-                className={css.errorMessage}
-                component="span"
-              />
-
-              <Field
-                type="email"
-                name="email"
-                className={css.field}
-                placeholder="Email"
-              />
-              <ErrorMessage
-                name="email"
-                className={css.errorMessage}
-                component="span"
-              />
+              <div className={css.fieldPosition}>
+                <Field
+                  type="text"
+                  name="name"
+                  className={css.field}
+                  placeholder="Name"
+                />
+                <ErrorMessage
+                  name="name"
+                  className={css.errorMessage}
+                  component="span"
+                />
+              </div>
+              <div className={css.fieldPosition}>
+                <Field
+                  type="email"
+                  name="email"
+                  className={css.field}
+                  placeholder="Email"
+                />
+                <ErrorMessage
+                  name="email"
+                  className={css.errorMessage}
+                  component="span"
+                />
+              </div>
               <PasswordField />
             </div>
             <button type="submit" className={css.btn}>

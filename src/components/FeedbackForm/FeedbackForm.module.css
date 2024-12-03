@@ -57,8 +57,23 @@
   color: #121417;
 }
 
+.field:hover,
+.field:focus,
+.field:active {
+  background-color: none;
+   outline: none;
+}
+.fieldPosition {
+  display: inherit;
+  width: 100%;
+  position: relative;
+}
+
 .errMessage {
   color: red;
+    position: absolute;
+  top:50px;
+  left: 20px;
 }
 
 .submtBook {

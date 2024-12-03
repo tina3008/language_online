@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   border: none;
+  background: transparent;
 }
 
 .SearchBox {
@@ -16,6 +17,7 @@
   row-gap: 32px;
   border: none;
   margin-bottom: 15px;
+   background: #F8F8F8;
 }
 
 .btnLoad {
